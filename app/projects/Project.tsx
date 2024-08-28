@@ -1,15 +1,73 @@
-"use client";
-
 import ProjectsWallpaper from "@/public/project-wallpaper.jpg";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import Link from "next/link";
-import { Steps } from "antd";
+import ProjectCard from "../components/ProjectsCard";
 
-import { useAppSelector } from "@/redux/store";
+type ProjectsType = {
+  title: string;
+  description: string;
+  technologies: string[];
+  colors: string[];
+  websiteLink?: string;
+  githubLink?: string;
+  duration: string;
+};
 
 export default function Projects() {
-  const theme = useAppSelector((state) => state.themeReducer.value.lightMode);
+  const projects: ProjectsType[] = [
+    {
+      title: "Carflys",
+      description:
+        "Developed a website for automating the car buying and selling process of America (Note: If you try to access the website then add a localstorage key-pair 'allowTraffic: true') Because this was developed for the users of America it only allows users from America to access it",
+      technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
+      colors: ["teal", "primary", "blue", "darkGray", "darkBlue"],
+      websiteLink: "https://carflys.com/",
+      duration: "June 2024 - August 2024",
+    },
+    {
+      title: "Ron's Automotive",
+      description:
+        "Developed a website for user side, a services offering website with focus on its performance, optimization and SEO. Added titles and decsription of all the specific pages for improving the SEO of the website",
+      technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
+      colors: ["primary", "darkBlue", "teal", "blue", "darkGray"],
+      websiteLink: "https://rons-automotive.com/",
+      duration: "July 2024",
+    },
+    {
+      title: "Waypoint Warranty",
+      description: "Developed a portfolio website along with its SEO",
+      technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
+      colors: ["blue", "tealHover", "darkGray", "lightGray", "primary"],
+      githubLink: "https://github.com/AbdullahSaad5/waypoint-warranty",
+      websiteLink: "https://waypointwarrantysolutions.com/",
+      duration: "July 2024",
+    },
+    {
+      title: "AutoAid",
+      description:
+        "Final Year Project, providing on-road assistance to users facing any issues with their vehicle breakdown, for finding nearby service providers or to find nearby Workshops. It also provides a feature of insurance claim, which checks your eligibility for the insurance packages using Random Forest Classifier",
+      technologies: [
+        "React.JS",
+        "React Native",
+        "Node.Js",
+        "Express.Js",
+        "Ant Design",
+        "Google Maps API",
+        "Open AI API",
+      ],
+      colors: [
+        "tealHover",
+        "primary",
+        "teal",
+        "lightGray",
+        "blue",
+        "darkBlue",
+        "darkGray",
+      ],
+      githubLink: "https://github.com/ahmadmahmood-96/AutoAid",
+      duration: "July 2024",
+    },
+  ];
+
   return (
     <>
       <section className="relative grid h-[calc(60vh-8rem)] min-h-[350px] w-full place-items-center object-cover">
@@ -33,58 +91,18 @@ export default function Projects() {
         className="bg-secondaryBg flex justify-center items-center py-5 px-10 my-10"
       >
         <div className="max-w-4xl w-full">
-          <Steps
-            className="flex justify-center items-center"
-            direction="vertical"
-            status="process"
-            items={[
-              {
-                title: (
-                  <span
-                    className={`font-semibold ${
-                      theme ? "text-black" : "text-white"
-                    }`}
-                  >
-                    EduCareer
-                  </span>
-                ),
-                status: "finish",
-                description: (
-                  <p className={`${theme ? "text-black" : "text-white"}`}>
-                    My Final Year Project, a website made in MERN Stack. A
-                    platform where teachers can register and then offer courses
-                    to students. The main features of the system are PDF to Quiz
-                    generator, Career Recommender, and a ChatBot as well{" "}
-                    <Link href="https://github.com/ahmadmahmood-96/EduCareer">
-                      <ExternalLink className="inline-block ml-2" />
-                    </Link>
-                  </p>
-                ),
-              },
-              {
-                title: (
-                  <span
-                    className={`font-semibold ${
-                      theme ? "text-black" : "text-white"
-                    }`}
-                  >
-                    Cloned a Website, with complete responsiveness
-                  </span>
-                ),
-                status: "finish",
-                description: (
-                  <p className={`${theme ? "text-black" : "text-white"}`}>
-                    A website I developed as a task during my Internship at
-                    Brantum as a Front-end Web Intern. Developed this website
-                    using HTML5, CSS3, JavaScript, and Bootstrap
-                    <Link href="/">
-                      <ExternalLink className="inline-block ml-2" />
-                    </Link>
-                  </p>
-                ),
-              },
-            ]}
-          />
+          {projects.map((project: ProjectsType, index: number) => (
+            <ProjectCard
+              key={index}
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              colors={project.colors}
+              duration={project.duration}
+              githubLink={project.githubLink}
+              websiteLink={project.websiteLink}
+            />
+          ))}
         </div>
       </section>
     </>

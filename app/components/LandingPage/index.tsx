@@ -1,19 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import HomeBanner from "@/public/home-banner.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import DisplayPicture1 from "@/public/display-picture-1.png";
 import { useAppSelector } from "@/redux/store";
 
 export default function LandingPage() {
   const theme = useAppSelector((state) => state.themeReducer.value.lightMode);
 
   const offers: string[] = [
-    "A Full Stack Developer",
-    "Experience in Software Documentation",
-    "Have done Software Testing projects as well",
-    "And Develop a Mobile Application as well in a semester project",
+    "Develop a Website along with its SEO with complete frontend and backend",
+    "Worked with following ML Models; LSTM Model, Decision Tree Classifier, Simple Vector Classifier Model",
+    "Worked with Hugging Face for developing a PDF to Quiz Generator module",
+    "Experience with technologies like Cypress and Selenium for automation",
+    "Developed a Mobile Application using React Native in Final Year Project",
+    "Have experience with Data Science and web scraping",
+    "Also have experience with Jira for Project Management, and also with Git",
   ];
 
   return (
@@ -44,7 +47,14 @@ export default function LandingPage() {
           </Link>
         </div>
       </main>
-      <section className="flex lg:flex-row flex-col lg:space-x-8 space-y-5 justify-center items-center p-5 lg:m-10 m-5">
+      <section className="flex lg:flex-row flex-col justify-center xl:space-x-4 lg:space-x-4 space-y-4 items-center p-5 lg:m-10 m-5">
+        <div className="flex items-center justify-center">
+          <Image
+            src={DisplayPicture1}
+            alt="Display Image"
+            className="xl:w-96 lg:w-96 w-60 object-fit p-2"
+          />
+        </div>
         <div className="lg:text-left text-center lg:w-[400px]">
           <h2 className="text-2xl font-bold">
             I am Ahmad Mahmood, A{" "}
@@ -59,19 +69,20 @@ export default function LandingPage() {
             >
               COMSATS University Islamabad, Islamabad Campus
             </span>
-            with a CGPA of 3.32. Having strong interest in Web Development using
-            MERN Stack and have expertise in Mobile Application Development
-            using React Native. With eager to learn more and by doing hardwork,
-            want to excel more in this field.
+            with a CGPA of 3.36. Having strong interest in Full Stack
+            Development using MERN Stack and have expertise in Mobile
+            Application Development using React Native, Machine Learning, Data
+            Science and Prompt Engineering, With eager to learn more and by
+            doing hardwork, want to excel more in this field.
           </p>
         </div>
       </section>
 
       <section className="relative grid h-[calc(60vh-8rem)] min-h-[400px] w-full place-items-center object-cover">
         <div className="absolute inset-0 bg-[#0c2748] z-[2] "></div>
-        <div className="z-[3] flex items-center text-center text-primaryText">
-          <h1 className="text-4xl lg:text-6xl font-bold">
-            Ahmad Mahmood, A Software Developer
+        <div className="z-[3] flex items-center text-center mx-4 text-primaryText">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
+            Ahmad Mahmood, A Full Stack Developer
           </h1>
         </div>
       </section>
