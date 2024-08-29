@@ -67,7 +67,7 @@ export default function LandingPage() {
                 theme ? "text-primary" : "text-white"
               } font-semibold`}
             >
-              COMSATS University Islamabad, Islamabad Campus
+              COMSATS University Islamabad, Islamabad Campus{" "}
             </span>
             with a CGPA of 3.36. Having strong interest in Full Stack
             Development using MERN Stack and have expertise in Mobile

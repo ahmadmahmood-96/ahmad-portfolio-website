@@ -8,9 +8,6 @@ import { useAppSelector } from "@/redux/store";
 
 export default function About() {
   const theme = useAppSelector((state) => state.themeReducer.value.lightMode);
-  const handleDownloadClick = () => {
-    message.success("CV Download 🎉");
-  };
 
   return (
     <>
@@ -69,7 +66,9 @@ export default function About() {
           </p>
           <a
             className="bg-teal hover:bg-[#0e6d63] text-white font-semibold py-3 px-6 rounded inline-flex items-center transition-colors duration-300"
-            onClick={handleDownloadClick}
+            onClick={() => message.success("CV Downloaded Successfully 🎉")}
+            href="/Ahmad's Resume.pdf"
+            download="Ahmad's Resume.pdf"
           >
             <Download className="mr-2" />
             Download CV

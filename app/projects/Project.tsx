@@ -1,25 +1,39 @@
+"use client";
+
+import { useState } from "react";
 import ProjectsWallpaper from "@/public/project-wallpaper.jpg";
 import Image from "next/image";
 import ProjectCard from "../components/ProjectsCard";
+import CategoryButton from "../components/CategoryButton";
 
 type ProjectsType = {
   title: string;
   description: string;
   technologies: string[];
   colors: string[];
+  category: string[];
   websiteLink?: string;
   githubLink?: string;
   duration: string;
 };
 
 export default function Projects() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories: string[] = [
+    "Web Development",
+    "Mobile Development",
+    "AI/ML",
+  ];
+
   const projects: ProjectsType[] = [
     {
       title: "Carflys",
       description:
         "Developed a website for automating the car buying and selling process of America (Note: If you try to access the website then add a localstorage key-pair 'allowTraffic: true') Because this was developed for the users of America it only allows users from America to access it",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
-      colors: ["teal", "primary", "blue", "darkGray", "darkBlue"],
+      colors: ["teal", "primary", "blue", "teal", "primary"],
+      category: ["Web Development"],
       websiteLink: "https://carflys.com/",
       duration: "June 2024 - August 2024",
     },
@@ -28,7 +42,8 @@ export default function Projects() {
       description:
         "Developed a website for user side, a services offering website with focus on its performance, optimization and SEO. Added titles and decsription of all the specific pages for improving the SEO of the website",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
-      colors: ["primary", "darkBlue", "teal", "blue", "darkGray"],
+      colors: ["primary", "blue", "teal", "primary", "blue"],
+      category: ["Web Development"],
       websiteLink: "https://rons-automotive.com/",
       duration: "July 2024",
     },
@@ -36,7 +51,8 @@ export default function Projects() {
       title: "Waypoint Warranty",
       description: "Developed a portfolio website along with its SEO",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
-      colors: ["blue", "tealHover", "darkGray", "lightGray", "primary"],
+      colors: ["blue", "teal", "primary", "blue", "primary"],
+      category: ["Web Development"],
       githubLink: "https://github.com/AbdullahSaad5/waypoint-warranty",
       websiteLink: "https://waypointwarrantysolutions.com/",
       duration: "July 2024",
@@ -50,23 +66,30 @@ export default function Projects() {
         "React Native",
         "Node.Js",
         "Express.Js",
+        "MongoDB",
         "Ant Design",
         "Google Maps API",
         "Open AI API",
       ],
       colors: [
-        "tealHover",
+        "teal",
         "primary",
         "teal",
-        "lightGray",
         "blue",
-        "darkBlue",
-        "darkGray",
+        "primary",
+        "blue",
+        "teal",
+        "primary",
       ],
+      category: ["Web Development", "Mobile Development"],
       githubLink: "https://github.com/ahmadmahmood-96/AutoAid",
-      duration: "July 2024",
+      duration: "September 2023 - May 2024",
     },
   ];
+
+  const filteredProjects = selectedCategory
+    ? projects.filter((project) => project.category.includes(selectedCategory))
+    : projects;
 
   return (
     <>
@@ -87,22 +110,38 @@ export default function Projects() {
         </span>
       </section>
       <section
-        id="products"
-        className="bg-secondaryBg flex justify-center items-center py-5 px-10 my-10"
+        id="projects"
+        className="bg-secondaryBg flex flex-col justify-center items-center py-5 px-10 my-10"
       >
-        <div className="max-w-4xl w-full">
-          {projects.map((project: ProjectsType, index: number) => (
-            <ProjectCard
+        <div className="flex flex-row space-x-3">
+          {categories.map((category: string, index: number) => (
+            <CategoryButton
               key={index}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-              colors={project.colors}
-              duration={project.duration}
-              githubLink={project.githubLink}
-              websiteLink={project.websiteLink}
+              text={category}
+              onClick={() => setSelectedCategory(category)}
+              isSelected={selectedCategory === category}
             />
           ))}
+        </div>
+        <div className="max-w-4xl w-full">
+          {filteredProjects.length === 0 ? (
+            <div className="text-center my-8 font-bold text-xl">
+              Sorry No projects found in {selectedCategory} category
+            </div>
+          ) : (
+            filteredProjects.map((project: ProjectsType, index: number) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                colors={project.colors}
+                duration={project.duration}
+                githubLink={project.githubLink}
+                websiteLink={project.websiteLink}
+              />
+            ))
+          )}
         </div>
       </section>
     </>
