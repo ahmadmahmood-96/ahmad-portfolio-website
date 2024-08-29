@@ -93,7 +93,7 @@ export default function About() {
                     Smart Forum (Islamabad, Pakistan)
                   </Link>{" "}
                   as Front End Web Intern (July 2023 - August 2023) where I
-                  worked on company's portfolio website.
+                  worked on company&apos;s portfolio website.
                 </li>
               </ul>
             </span>
