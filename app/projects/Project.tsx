@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProjectsWallpaper from "@/public/project-wallpaper.jpg";
 import Image from "next/image";
 import ProjectCard from "../components/ProjectsCard";
@@ -18,12 +18,16 @@ type ProjectsType = {
 };
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    "All"
+  );
 
   const categories: string[] = [
+    "All",
     "Web Development",
     "Mobile Development",
     "AI/ML",
+    "Others",
   ];
 
   const projects: ProjectsType[] = [
@@ -33,7 +37,7 @@ export default function Projects() {
         "Developed a website for automating the car buying and selling process of America (Note: If you try to access the website then add a localstorage key-pair 'allowTraffic: true') Because this was developed for the users of America it only allows users from America to access it",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
       colors: ["teal", "primary", "blue", "teal", "primary"],
-      category: ["Web Development"],
+      category: ["All", "Web Development"],
       websiteLink: "https://carflys.com/",
       duration: "June 2024 - August 2024",
     },
@@ -43,7 +47,7 @@ export default function Projects() {
         "Developed a website for user side, a services offering website with focus on its performance, optimization and SEO. Added titles and decsription of all the specific pages for improving the SEO of the website",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
       colors: ["primary", "blue", "teal", "primary", "blue"],
-      category: ["Web Development"],
+      category: ["All", "Web Development"],
       websiteLink: "https://rons-automotive.com/",
       duration: "July 2024",
     },
@@ -52,7 +56,7 @@ export default function Projects() {
       description: "Developed a portfolio website along with its SEO",
       technologies: ["Next.JS", "Tailwind CSS", "Daisy UI", "Jira", "Git"],
       colors: ["blue", "teal", "primary", "blue", "primary"],
-      category: ["Web Development"],
+      category: ["All", "Web Development"],
       githubLink: "https://github.com/AbdullahSaad5/waypoint-warranty",
       websiteLink: "https://waypointwarrantysolutions.com/",
       duration: "July 2024",
@@ -81,9 +85,31 @@ export default function Projects() {
         "teal",
         "primary",
       ],
-      category: ["Web Development", "Mobile Development"],
+      category: ["All", "Web Development", "Mobile Development"],
       githubLink: "https://github.com/ahmadmahmood-96/AutoAid",
       duration: "September 2023 - May 2024",
+    },
+    {
+      title: "Cypress",
+      description:
+        "Written Cypress Automation scripts for testing an e-commerce website for Software Testing semester project",
+      technologies: ["Cypress"],
+      colors: ["blue", "primary", "teal"],
+      category: ["All", "Others"],
+      githubLink: "https://github.com/ahmadmahmood-96/Cypress",
+      websiteLink: "https://shopblissfulbeauty.com",
+      duration: "January 2024",
+    },
+    {
+      title: "PDF to Quiz Generator",
+      description:
+        "Developed a module which takes in a PDF file as input and generates a quiz from it using NLP, and using transformers from Hugging Face",
+      technologies: ["Transformers", "Hugging Face", "NLTK", "Flask"],
+      colors: ["blue", "primary", "teal", "blue", "primary", "teal"],
+      category: ["All", "AI/ML"],
+      githubLink:
+        "https://github.com/ahmadmahmood-96/EduCareer/blob/main/Flask%20Server/app.py",
+      duration: "April 2024",
     },
   ];
 
@@ -111,9 +137,9 @@ export default function Projects() {
       </section>
       <section
         id="projects"
-        className="bg-secondaryBg flex flex-col justify-center items-center py-5 px-10 my-10"
+        className="bg-secondaryBg flex flex-col justify-center items-center py-5 2xl:px-10 xl:px-10 lg:px-10 md:px-6 px-4 my-10"
       >
-        <div className="flex flex-row space-x-3">
+        <div className="flex flex-row space-x-3 flex-wrap items-center justify-center">
           {categories.map((category: string, index: number) => (
             <CategoryButton
               key={index}

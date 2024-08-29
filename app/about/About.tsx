@@ -40,24 +40,29 @@ export default function About() {
                 <span className="text-teal">My Career and Experience</span>
               </p>
             </h2>
-            <p
+            <span
               className={`${
                 theme ? "text-[#656262]" : "text-[##948e8e]"
               } md:text-md lg:text-left text-center`}
             >
               Me, Ahmad Mahmood a recent graduate from Comsats University
-              Islamabad, Islamabad Campus. Finished my Bachelor&apos;s of
-              Software Engineering with a CGPA of 3.36. My major courses which I
-              studied were; Web Development using MERN Stack, Mobile Application
-              Development using React Native, Software Quality Engineering and
-              Software Testing in which I practiced working with JIRA, Cypress,
-              Selenium and did both automation and manual testing, Topics in
-              Software Engineering Part 1 in which I studied React JS. Then in
-              Topics in Software Engineering Part 2 in which I worked with Git,
-              AWS in which I learnt working with EC2 machines, S3 Buckets,
-              Jenkins, Docker and Kubernetes. <br />
+              Islamabad, Islamabad Campus in July 2024. Finished my
+              Bachelor&apos;s of Software Engineering with a CGPA of 3.36. My
+              major courses which I studied were; Web Development using MERN
+              Stack, Mobile Application Development using React Native, Software
+              Quality Engineering and Software Testing in which I practiced
+              working with JIRA, Cypress, Selenium and did both automation and
+              manual testing, Topics in Software Engineering Part 1 in which I
+              studied React JS. Then in Topics in Software Engineering Part 2 in
+              which I worked with Git, AWS in which I learnt working with EC2
+              machines, S3 Buckets, Jenkins, Docker and Kubernetes. I have
+              expertise in working with Front end technologies such as Next.Js,
+              React.Js, React Native, Tailwind CSS, Ant Design, Daisy UI. I have
+              also experience in working with MongoDB, MySQL, Python for web
+              scraping, AI/ML Development, and Data Science
               <br />
-              <ul>
+              <br />
+              <ul className="list-disc list-inside">
                 <li>
                   Right now I am working as a Front End Web Intern at{" "}
                   <Link href="https://codora.io/" className="font-semibold">
@@ -78,8 +83,20 @@ export default function About() {
                   user side services providing website and performing its SEO
                   for better ranking of the website.
                 </li>
+                <li>
+                  {" "}
+                  I have worked at Central Asian Cellular Forum now known as{" "}
+                  <Link
+                    href="https://www.smartforum.org/"
+                    className="font-semibold"
+                  >
+                    Smart Forum (Islamabad, Pakistan)
+                  </Link>{" "}
+                  as Front End Web Intern (July 2023 - August 2023) where I
+                  worked on company's portfolio website.
+                </li>
               </ul>
-            </p>
+            </span>
           </div>
           <div className="my-5 ">
             <Image

@@ -12,7 +12,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`px-3 py-1 rounded-md font-medium transition-colors ${
+      className={`px-3 py-1 mt-3 rounded-md font-medium transition-colors ${
         isSelected ? "bg-blue text-white" : "bg-slate-100 text-black"
       }`}
     >
