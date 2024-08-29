@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import AboutBanner1 from "@/public/about1-banner.png";
+import DisplayPicture2 from "@/public/display-picture-2.jpg";
 import { Download } from "lucide-react";
 import { message } from "antd";
 import { useAppSelector } from "@/redux/store";
+import Link from "next/link";
 
 export default function About() {
   const theme = useAppSelector((state) => state.themeReducer.value.lightMode);
@@ -28,27 +30,63 @@ export default function About() {
       <section className="">
         <div className="flex flex-col lg:flex-row justify-center items-center lg:px-16 px-10 gap-y-5 gap-x-9 my-10">
           <div className="flex flex-col justify-center items-center lg:items-start lg:w-[700px]">
-            <h2 className="font-bold text-4xl mb-4 text-center text-primary lg:text-left">
-              <p className="my-1">Something About</p>
+            <h2
+              className={`font-bold text-4xl mb-4 text-center ${
+                theme ? "text-primary" : "text-white"
+              } lg:text-left`}
+            >
+              <p className="my-1">About</p>
               <p>
                 <span className="text-teal">My Career and Experience</span>
               </p>
             </h2>
-            <p className="text-[#656262] md:text-md lg:text-left text-center">
+            <p
+              className={`${
+                theme ? "text-[#656262]" : "text-[##948e8e]"
+              } md:text-md lg:text-left text-center`}
+            >
               Me, Ahmad Mahmood a recent graduate from Comsats University
               Islamabad, Islamabad Campus. Finished my Bachelor&apos;s of
-              Software Engineering with a CGPA of 3.32. My major courses which I
-              studied were Web Development using MERN Stack, Mobile Application
+              Software Engineering with a CGPA of 3.36. My major courses which I
+              studied were; Web Development using MERN Stack, Mobile Application
               Development using React Native, Software Quality Engineering and
               Software Testing in which I practiced working with JIRA, Cypress,
               Selenium and did both automation and manual testing, Topics in
-              Software Engineering Part 1 in which I studied Angular and React
-              JS. Then Topics in Software Engineering Part 2 in which I worked
-              with Git, AWS in which I learnt working with EC2 machines, S3
-              Buckets, Jenkins, Docker and Kubernetes. <br />
-              Right now I am working as a Front End Web Intern remotely at
-              Brantum Technologies (Rawalpindi, Pakistan).
+              Software Engineering Part 1 in which I studied React JS. Then in
+              Topics in Software Engineering Part 2 in which I worked with Git,
+              AWS in which I learnt working with EC2 machines, S3 Buckets,
+              Jenkins, Docker and Kubernetes. <br />
+              <br />
+              <ul>
+                <li>
+                  Right now I am working as a Front End Web Intern at{" "}
+                  <Link href="https://codora.io/" className="font-semibold">
+                    Codora Pvt Ltd (Islamabad, Pakistan)
+                  </Link>{" "}
+                </li>
+                <li>
+                  {" "}
+                  I have worked at{" "}
+                  <Link
+                    href="https://decimalsolution.com/"
+                    className="font-semibold"
+                  >
+                    Decimal Solution (Islamabad, Pakistan)
+                  </Link>{" "}
+                  as Front End Web Intern (June 2024 - August 2024) where I
+                  worked on three different projects which included developing
+                  user side services providing website and performing its SEO
+                  for better ranking of the website.
+                </li>
+              </ul>
             </p>
+          </div>
+          <div className="my-5 ">
+            <Image
+              src={DisplayPicture2}
+              alt="Display Picture 2"
+              className="object-cover rounded-full w-96 h-96"
+            />
           </div>
         </div>
       </section>
@@ -61,7 +99,11 @@ export default function About() {
           <h2 className="text-2xl font-bold mb-4 text-center">
             Download My CV
           </h2>
-          <p className="text-center text-[#656262] mb-6">
+          <p
+            className={`text-center ${
+              theme ? "text-[#656262]" : "text-[##948e8e]"
+            } mb-6`}
+          >
             Get a detailed look at my career journey, skills, and projects.
           </p>
           <a
